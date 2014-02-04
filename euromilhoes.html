@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<script>
+		
+			function inicia() {
+
+				// # de numeros e # de estrelas que compoe a chave
+				const NN = 5;
+				const NE = 2;
+
+				// valor minimo e maximo para as estrelas 
+				const MINE = 1;
+				const MAXE = 11;
+
+				// valor min e max para os numeros
+				const MINN = 1;
+				const MAXN = 50;
+
+				var numeros  = new Array();
+				for(var i=0; i< NN; i++ ) {
+					var num = geranumero(MINN,MAXN);
+					numeros.push(num);
+					//alert(numeros);
+				}
+
+				alert("numeros antes de ordenar: "+ numeros);
+				// ordenar os numeros
+				numeros.sort(ordena);
+				//alert("numeros depois de ordenar: "+ numeros);
+
+				var estrelas = new Array(); 
+				for(var i=0; i< NE; i++ ) {
+					var estrela = geranumero(MINE,MAXE);
+					estrelas.push(estrela);
+					//alert(estrelas);
+				}
+				alert("estrelas antes de ordenar: "+ estrelas);
+				// ordenar os numeros
+				numeros.sort(ordena);
+				alert("estrelas depois de ordenar: "+ estrelas);
+
+				function geranumero(min,max) {
+					//num = Math.floor(Math.random()*50)+1;
+					num = Math.floor(Math.random()*max)+min;
+					return num;
+				}
+
+				function ordena(a,b) {
+					return (a-b);
+				}
+
+				var odivchaves = document.getElementById("chaves");
+
+				var alistanum = document.createElement("ul");
+				alistanum.setAttribute("class","numeros");
+				for(var i=0; i<numeros.length; i++) {
+					var oli = document.createElement("li");
+					oli.innerHTML=numeros[i];
+					alistanum.appendChild(oli);
+				}
+				odivchaves.appendChild(alistanum);
+			}
+			
+		</script>
+		
+	</head>
+	<body onload="inicia();">
+		<input type="button" value="gera chave"/>
+		<div id="chaves"></div>
+	</body>
+</html>
